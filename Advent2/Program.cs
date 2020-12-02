@@ -26,14 +26,17 @@ namespace Advent2
 
                 int frequency = letters.Count(l => (l == letter));
 
-                int lowRange = Int32.Parse(range.Split('-')[0]);
-                int highRange = Int32.Parse(range.Split('-')[1]);
+                int lowindex = Int32.Parse(range.Split('-')[0]) - 1;
+                int highindex = Int32.Parse(range.Split('-')[1]) - 1;
 
-                if (frequency >= lowRange && frequency <= highRange)
+                if (letters[lowindex] == letter && letters[highindex] != letter)
                 {
                     count++;
                 }
-
+                if (letters[lowindex] != letter && letters[highindex] == letter)
+                {
+                    count++;
+                }
             }
             return count;
         }
